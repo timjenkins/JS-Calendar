@@ -1,0 +1,21 @@
+.day-view,
+.month-view {
+  border: solid 1px #ddd;
+  display: inline-block;
+  width: 49%;
+  margin: 0 0 0 0;
+}
+
+.day-view {
+  text-align: center;
+  .month-name {
+    width: 100%;
+    border-bottom: solid 1px #eee;
+    line-height: 2;
+  }
+}
+
+ .day {
+    font-size: 48px;
+    padding: 20% 0;
+  }
