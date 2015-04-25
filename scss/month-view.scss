@@ -1,0 +1,47 @@
+.month-day {
+	width: 14.285714286%;
+	overflow: hidden;
+	display: inline-block;
+	font-size: 11px;
+	line-height: 24px;
+	height: 24px;
+	text-align: center;
+	border: solid 1px #eee;
+	border-top: none;
+	border-left: none;
+	vertical-align:top;
+	text-decoration: none;
+	color: #000;
+
+}
+
+.week {
+	display: block;
+}
+
+.month-view {
+	overflow: hidden;
+
+	header {
+		position: relative;
+		text-align: center;
+		width: 100%;
+		border-bottom: solid 1px #eee;
+		line-height: 2;
+	}
+}
+
+.left-nav,
+.right-nav {
+	position: absolute;
+	height: 100%;
+	width: 24px;
+	text-decoration: none;
+	font-size: 8px;
+	line-height: 2rem;
+	color: #bbb;
+}
+
+.left-nav {left: 0;}
+
+.right-nav {right: 0;}

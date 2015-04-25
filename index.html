@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Calendar Widget for Intent Media</title>
 </head>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="main.css">
 <body>
 	
 
@@ -13,16 +13,16 @@
   
   <div class="day-view">
     <div id="day-monthname" class="month-name">Month Name</div>
-    <div class="day">28</div>
+    <div class="day" id="day">28</div>
   </div>
 
   <div class="month-view">
     <header>
-      <a href="#" class="left-nav"><</a>
+      <a href="#" class="left-nav" id="prev-month"><</a>
       <span id="month-monthname">Month Name</span>
-      <a href="#" class="right-nav">></a>      
+      <a href="#" class="right-nav" id="next-month">></a>      
     </header> 
-    <div class="day">28</div>
+    <div id="calendar-body"></div>
   </div>
 </div>
 
