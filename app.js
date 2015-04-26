@@ -1,11 +1,7 @@
-
-
-
-
-
-
 var Calendar = function(){
-  this.today = new Date();
+  
+  this.today = new Date(); 
+  
   this.currentDate = new Object();
   this.currentDate.year = this.today.getFullYear();
   this.currentDate.month = this.today.getMonth();
@@ -14,11 +10,7 @@ var Calendar = function(){
   
   var ca = this;
 
-  // Takes a date object and returns the Name of the Month
-  this.getMonthName = function(date){
-    var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    return monthNames[date.getMonth()];
-  }
+
 
   // Set date to new one
   this.setDate = function(newdate){
@@ -32,10 +24,7 @@ var Calendar = function(){
   this.buildDay = function(date){
     var selectedDay = date;
     document.getElementById("day").innerHTML = selectedDay.getDate();
-
-    document.getElementById("day-monthname").innerHTML=
-      ca.getMonthName(date);
-    ;
+    document.getElementById("day-monthname").innerHTML = ca.getMonthName(date);
   };
 
 
@@ -48,9 +37,7 @@ var Calendar = function(){
     var calendarHtml = "";
     var firstDay = ca.currentDate.monthDate.getDay();
 
-    document.getElementById("month-monthname").innerHTML=
-      ca.getMonthName(date);
-    ;
+    document.getElementById("month-monthname").innerHTML = ca.getMonthName(date);
 
     for (var i = 0; i < firstDay; i++){
       daysArray.push('');
@@ -81,17 +68,20 @@ var Calendar = function(){
 
   // Set month and month view to next month
   this.nextMonth = function(){
-    ca.currentDate.month += 1;
-    var nextMonth = new Date(ca.currentDate.year, ca.currentDate.month, ca.currentDate.day);
-    ca.buildMonth(nextMonth);
+    
+    ca.currentDate.month += 2;
+
+    theNextMonth = new Date(ca.currentDate.year, ca.currentDate.month, ca.currentDate.day);
+    ca.buildMonth(theNextMonth);
+    console.log(theNextMonth);
   };
 
 
   // Set month and month view to previous month
   this.prevMonth = function(){
-    ca.currentDate.month -= 1;
-    var nextMonth = new Date(ca.currentDate.year, ca.currentDate.month, ca.currentDate.day);
-    ca.buildMonth(nextMonth);
+    // ca.currentDate.month -= 1;
+    var thePrevMonth = new Date(ca.currentDate.year, ca.currentDate.month, ca.currentDate.day);
+    ca.buildMonth(thePrevMonth);
   };
 
 
@@ -115,7 +105,6 @@ var Calendar = function(){
           }
 
       }
-
   };
 
   // Determine key pressed and change month based on it
@@ -123,8 +112,7 @@ var Calendar = function(){
     e = e || window.event;
     if (e.keyCode == '37') {ca.prevMonth();}
     else if (e.keyCode == '39') {ca.nextMonth();}
-
-}
+  };
 
   // Bind Calendar Controls to proper functionality
   this.bindControls = function(){
@@ -145,8 +133,6 @@ var Calendar = function(){
     ca.buildMonth(ca.today);
   }
 
-
-
   this.init();
 }
 
@@ -156,5 +142,11 @@ Calendar.prototype.daysInMonth = function(year,month) {
   return new Date(year, (month + 1), 0).getDate();
 }
 
+
+// Takes a date object and returns the Name of the Month
+Calendar.prototype.getMonthName = function(date){
+  var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  return monthNames[date.getMonth()];
+}
 
 var newCalendar = new Calendar();

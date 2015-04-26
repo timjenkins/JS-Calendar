@@ -1,3 +1,15 @@
+.month-view {
+	overflow: hidden;
+	header {
+		position: relative;
+		text-align: center;
+		width: 100%;
+		color: #fff;
+		line-height: 2;
+		background: $primary;
+	}
+}
+
 .day-letters {
 	padding: 0 0 0 0;
 	list-style: none;
@@ -18,8 +30,12 @@
 	}
 }
 
+.week {
+	display: block;
+}
+
 .month-day {
-	-webkit-transition: all .5s;
+	-webkit-transition: all .2s;
 	width: 14.285714286%;
 	overflow: hidden;
 	display: inline-block;
@@ -33,41 +49,27 @@
 	vertical-align:top;
 	text-decoration: none;
 	color: #000;
+	
 	&#active-day {
 		background: $primary-light;
 		color: #fff;
 		box-shadow: 0 0 0 3px $primary-light;
 		border-right: none;
 		border-bottom: none;
+		font-size: 14px;
 	}
+	
 	&:hover {
 		background: #eee;
 	}
+	
 	&:active {
-		
-		// background: #444;
-		// color: #fff;
 		box-shadow: 0 0 0 6px #eee;
 	}
 }
 
-.week {
-	display: block;
-}
 
-.month-view {
-	overflow: hidden;
-
-	header {
-		position: relative;
-		text-align: center;
-		width: 100%;
-		color: #fff;
-		line-height: 2;
-		background: $primary;
-	}
-}
-
+//Navigation Buttons on the right and left of Month View Header
 .left-nav,
 .right-nav {
 	position: absolute;
