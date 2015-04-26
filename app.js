@@ -1,49 +1,55 @@
-var today = new Date();
-
-var currentDate = new Object();
-
-currentDate.year = today.getFullYear();
-currentDate.month = today.getMonth();
-currentDate.day = today.getDay();
-currentDate.monthDate = new Date(currentDate.year, currentDate.month, 1);
 
 
-var calendarThing = {
 
-  daysInMonth: function(year,month) {
-     return new Date(year, (month + 1), 0).getDate();
-  },
 
-  setDate: function(newdate){
-    currentDate.year = newdate.getFullYear();
-    currentDate.month = newdate.getMonth();
-    currentDate.monthDate = new Date(currentDate.year, currentDate.month, 1);
-  },
 
+
+var Calendar = function(){
+  this.today = new Date();
+  this.currentDate = new Object();
+  this.currentDate.year = this.today.getFullYear();
+  this.currentDate.month = this.today.getMonth();
+  this.currentDate.day = this.today.getDay();
+  this.currentDate.monthDate = new Date(this.currentDate.year, this.currentDate.month, 1);
+  
+  var ca = this;
+
+  // Takes a date object and returns the Name of the Month
+  this.getMonthName = function(date){
+    var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    return monthNames[date.getMonth()];
+  }
+
+  // Set date to new one
+  this.setDate = function(newdate){
+    ca.currentDate.year = newdate.getFullYear();
+    ca.currentDate.month = newdate.getMonth();
+    ca.currentDate.monthDate = new Date(ca.currentDate.year, ca.currentDate.month, 1);
+  };
 
 
   // Inject currently selected day information into Day View
-  buildDay: function(date){
+  this.buildDay = function(date){
     var selectedDay = date;
     document.getElementById("day").innerHTML = selectedDay.getDate();
 
     document.getElementById("day-monthname").innerHTML=
-      selectedDay.toLocaleString("en-us", {month: "long"})
+      ca.getMonthName(date);
     ;
-  },
+  };
 
 
   // Build the month view (calendar) based on selected date
-  buildMonth: function(date){
-    calendarThing.setDate(date);
-    monthLength = calendarThing.daysInMonth(currentDate.year, currentDate.month);
+  this.buildMonth = function(date){
+    ca.setDate(date);
+    monthLength = ca.daysInMonth(ca.currentDate.year, ca.currentDate.month);
 
     var daysArray = [];
     var calendarHtml = "";
-    var firstDay = currentDate.monthDate.getDay();
+    var firstDay = ca.currentDate.monthDate.getDay();
 
     document.getElementById("month-monthname").innerHTML=
-      date.toLocaleString("en-us", {month: "long"})
+      ca.getMonthName(date);
     ;
 
     for (var i = 0; i < firstDay; i++){
@@ -58,7 +64,6 @@ var calendarThing = {
       daysArray.push('');
     }
 
-
     for (var i = 0; i < daysArray.length; i++){
       if ((i + 1) % 7 == 0){
         calendarHtml += '<a href="#" class="month-day">' + daysArray[i] + '</a></div>';
@@ -71,57 +76,85 @@ var calendarThing = {
 
     document.getElementById("calendar-body").innerHTML = calendarHtml;
     
-  },
+  };
 
 
   // Set month and month view to next month
-  nextMonth: function(){
-    currentDate.month += 1;
-    nextMonth = new Date(currentDate.year, currentDate.month, currentDate.day);
-    calendarThing.buildMonth(nextMonth);
-  },
+  this.nextMonth = function(){
+    ca.currentDate.month += 1;
+    var nextMonth = new Date(ca.currentDate.year, ca.currentDate.month, ca.currentDate.day);
+    ca.buildMonth(nextMonth);
+  };
+
 
   // Set month and month view to previous month
-  prevMonth: function(){
-    currentDate.month -= 1;
-    nextMonth = new Date(currentDate.year, currentDate.month, currentDate.day);
-    calendarThing.buildMonth(nextMonth);
-  },
+  this.prevMonth = function(){
+    ca.currentDate.month -= 1;
+    var nextMonth = new Date(ca.currentDate.year, ca.currentDate.month, ca.currentDate.day);
+    ca.buildMonth(nextMonth);
+  };
+
 
   // Change the selected day and update the day view to reflect change. 
-  changeDay: function(e)
+  this.changeDay = function(e)
   {
       e = e || window.event;
       var target = e.target || e.srcElement;
       if (target.className.match(/month-day/))
       {
           var dayNumber = target.innerHTML;
-          console.log("clicked day " + dayNumber);
+          if (dayNumber != ""){
+            
+            if (document.getElementById("active-day")){
+              document.getElementById("active-day").removeAttribute("id")
+            };
 
-          today = new Date(currentDate.year, currentDate.month, dayNumber);
-          calendarThing.buildDay(today);
+            target.id = "active-day";
+            ca.today = new Date(ca.currentDate.year, ca.currentDate.month, dayNumber);
+            ca.buildDay(ca.today);
+          }
+
       }
-  },
 
-  // Bind Calendar Controls to proper functionality
-  bindControls: function(){
+  };
 
-    // Advance to next month
-    document.getElementById("next-month").addEventListener('click', calendarThing.nextMonth, false);
+  // Determine key pressed and change month based on it
+  function arrowMonth(e) {
+    e = e || window.event;
+    if (e.keyCode == '37') {ca.prevMonth();}
+    else if (e.keyCode == '39') {ca.nextMonth();}
 
-    // Go to previous month
-    document.getElementById("prev-month").addEventListener('click', calendarThing.prevMonth, false);
-
-    // Change selected day
-    document.getElementById("calendar-body").addEventListener('click',calendarThing.changeDay,false);
-  },
-
-  // Build Calendar
-  init: function(){
-    calendarThing.bindControls();
-    calendarThing.buildDay(today);
-    calendarThing.buildMonth(today);
-  }
 }
 
-calendarThing.init();
+  // Bind Calendar Controls to proper functionality
+  this.bindControls = function(){
+    // Advance to next month
+    document.getElementById("next-month").addEventListener('click', ca.nextMonth, false);
+    // Go to previous month
+    document.getElementById("prev-month").addEventListener('click', ca.prevMonth, false);
+    // Change selected day
+    document.getElementById("calendar-body").addEventListener('click',ca.changeDay,false);
+    // Arrow Keys to change month
+    document.onkeyup = arrowMonth;
+  };
+
+  // Build Calendar
+  this.init = function(){
+    ca.bindControls();
+    ca.buildDay(ca.today);
+    ca.buildMonth(ca.today);
+  }
+
+
+
+  this.init();
+}
+
+
+// Calculate days in month 
+Calendar.prototype.daysInMonth = function(year,month) {
+  return new Date(year, (month + 1), 0).getDate();
+}
+
+
+var newCalendar = new Calendar();

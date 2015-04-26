@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1" />
 	<meta charset="UTF-8">
 	<title>Calendar Widget for Intent Media</title>
 </head>
@@ -8,21 +9,42 @@
 <body>
 	
 
-
-<div class="calendar">
+<!-- calendar container class -->
+<div id="calendar">
   
+  
+
+  <!-- day view showing month and giant day number -->
   <div class="day-view">
+
+	<!-- month label for selected day -->
     <div id="day-monthname" class="month-name">Month Name</div>
+
+    <!-- giant day number -->
     <div class="day" id="day">28</div>
+
   </div>
 
+
+
+  <!-- month view showing entire month layed out like a classic calendar -->
   <div class="month-view">
+
+	<!-- month name and controls -->
     <header>
-      <a href="#" class="left-nav" id="prev-month"><</a>
+      <a href="#" class="left-nav" id="prev-month">◀</a>
       <span id="month-monthname">Month Name</span>
-      <a href="#" class="right-nav" id="next-month">></a>      
+      <a href="#" class="right-nav" id="next-month">▶</a>      
     </header> 
+
+	<!-- labels showing days of the week -->
+    <ul class="day-letters">
+    	<li>S</li><li>M</li><li>T</li><li>W</li><li>T</li><li>F</li><li>S</li>
+    </ul>
+
+	<!-- days grid dynamically created here -->
     <div id="calendar-body"></div>
+
   </div>
 </div>
 

@@ -1,7 +1,7 @@
-.calendar {
+#calendar {
   display: block;
-  width: 400px;
+  @include min-breakpoint(800px){width: 400px;};
   max-width: 100%;
   vertical-align: top;
-  height: 178px;
+  height: 191px;
 }

@@ -1,0 +1,10 @@
+//Mixin for adding breakpoint - effects everything below $point value screen width
+@mixin max-breakpoint($point) {
+    @media screen and (max-width: $point){ @content; }
+}
+
+//Mixin for adding breakpoint - effects everything above $point value screen width
+@mixin min-breakpoint($point) {
+    @media screen and (min-width: $point){ @content; }
+}
+

@@ -1,4 +1,25 @@
+.day-letters {
+	padding: 0 0 0 0;
+	list-style: none;
+	margin: 0 0 0 0;
+	background: $primary-light;
+	height: 14px;
+	overflow: hidden;
+	li {
+		padding: 0;
+		display: inline-block;
+		width: 14.285714286%;
+		font-size: 8px;
+		font-weight: 300;
+		text-align: center;
+		line-height: 14px;
+		vertical-align: top;
+		color: #fff;
+	}
+}
+
 .month-day {
+	-webkit-transition: all .5s;
 	width: 14.285714286%;
 	overflow: hidden;
 	display: inline-block;
@@ -6,13 +27,28 @@
 	line-height: 24px;
 	height: 24px;
 	text-align: center;
-	border: solid 1px #eee;
+	border: solid 1px rgba(#000,.05);
 	border-top: none;
 	border-left: none;
 	vertical-align:top;
 	text-decoration: none;
 	color: #000;
-
+	&#active-day {
+		background: $primary-light;
+		color: #fff;
+		box-shadow: 0 0 0 3px $primary-light;
+		border-right: none;
+		border-bottom: none;
+	}
+	&:hover {
+		background: #eee;
+	}
+	&:active {
+		
+		// background: #444;
+		// color: #fff;
+		box-shadow: 0 0 0 6px #eee;
+	}
 }
 
 .week {
@@ -26,8 +62,9 @@
 		position: relative;
 		text-align: center;
 		width: 100%;
-		border-bottom: solid 1px #eee;
+		color: #fff;
 		line-height: 2;
+		background: $primary;
 	}
 }
 
@@ -39,7 +76,7 @@
 	text-decoration: none;
 	font-size: 8px;
 	line-height: 2rem;
-	color: #bbb;
+	color: #fff;
 }
 
 .left-nav {left: 0;}

@@ -1,6 +1,9 @@
-@import 'calendar.scss',
-        'day-view.scss',
-        'month-view.scss';
+
+@import 'mixins',
+		'colours',
+		'structure',
+        'day-view',
+        'month-view';
 
 *{box-sizing: border-box}
 

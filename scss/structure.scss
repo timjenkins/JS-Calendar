@@ -1,0 +1,27 @@
+#calendar {
+  display: block;
+  max-width: 100%;
+  vertical-align: top;
+  height: 191px;
+
+  @include min-breakpoint(500px){
+  	width: 400px;
+  };
+}
+
+.day-view,
+.month-view {
+  border: solid 1px $primary;
+  height: 100%;
+  vertical-align: top;
+  
+  @include max-breakpoint(500px){
+  	margin-bottom: 20px;
+  }
+
+  @include min-breakpoint(500px){
+    display: inline-block;
+    width: 49%;
+  };
+
+}
