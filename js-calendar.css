@@ -83,7 +83,8 @@
   border-left: none;
   vertical-align: top;
   text-decoration: none;
-  color: #000; }
+  color: #000;
+  cursor: pointer; }
   .month-day#active-day {
     background: #e3594f;
     color: #fff;
@@ -103,10 +104,12 @@
   position: absolute;
   height: 100%;
   width: 24px;
+  top: 0;
   text-decoration: none;
   font-size: 8px;
   line-height: 2rem;
-  color: #fff; }
+  color: #fff;
+  cursor: pointer; }
   .left-nav:before,
   .right-nav:before {
     content: '';

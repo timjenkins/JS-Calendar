@@ -55,11 +55,11 @@ var Calendar = function(e){
 
     for (var i = 0; i < daysArray.length; i++){
       if ((i + 1) % 7 == 0){
-        calendarHtml += '<a href="#" class="month-day">' + daysArray[i] + '</a></div>';
+        calendarHtml += '<div href="#" class="month-day">' + daysArray[i] + '</div></div>';
       } else if ((i + 1) % 7 == 1 ){
-        calendarHtml += '<div class="week"><a href="#" class="month-day">' + daysArray[i] + '</a>';
+        calendarHtml += '<div class="week"><div href="#" class="month-day">' + daysArray[i] + '</div>';
       } else {
-        calendarHtml += '<a href="#" class="month-day">' + daysArray[i] + '</a>';
+        calendarHtml += '<div href="#" class="month-day">' + daysArray[i] + '</div>';
       }
     }
 
@@ -73,6 +73,7 @@ var Calendar = function(e){
     ca.currentDate.month += 1;
     theNextMonth = new Date(ca.currentDate.year, ca.currentDate.month, ca.currentDate.day);
     ca.buildMonth(theNextMonth);
+    return false;
   };
 
 
@@ -81,6 +82,7 @@ var Calendar = function(e){
     ca.currentDate.month -= 1;
     var thePrevMonth = new Date(ca.currentDate.year, ca.currentDate.month, ca.currentDate.day);
     ca.buildMonth(thePrevMonth);
+    return false;
   };
 
 
@@ -104,6 +106,7 @@ var Calendar = function(e){
           }
 
       }
+      return false;
   };
 
   // Determine key pressed and change month based on it
@@ -157,9 +160,9 @@ Calendar.prototype.buildHtml = function(el){
     '\n' +
     '  <!-- month name and controls -->\n' +
     '    <header>\n' +
-    '      <a href="#" class="left-nav" id="prev-month"></a>\n' +
+    '      <div class="left-nav" id="prev-month"></div>\n' +
     '      <span id="month-monthname">Month Name</span>\n' +
-    '      <a href="#" class="right-nav" id="next-month"></a>\n' +
+    '      <div class="right-nav" id="next-month"></div>\n' +
     '    </header>\n' +
     '\n' +
     '  <!-- labels showing days of the week -->\n' +

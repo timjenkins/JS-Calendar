@@ -49,6 +49,7 @@
 	vertical-align:top;
 	text-decoration: none;
 	color: #000;
+	cursor: pointer;
 	
 	&#active-day {
 		background: $primary-light;
@@ -60,11 +61,11 @@
 	}
 
 	&:hover {
-			@include min-breakpoint(700px){	background: #eee;}
+		@include min-breakpoint(700px){	background: #eee;}
 	}
 	
 	&:active {
-			@include min-breakpoint(700px){box-shadow: 0 0 0 6px #eee;}
+		@include min-breakpoint(700px){box-shadow: 0 0 0 6px #eee;}
 	}
 }
 
@@ -75,10 +76,12 @@
 	position: absolute;
 	height: 100%;
 	width: 24px;
+	top: 0;
 	text-decoration: none;
 	font-size: 8px;
 	line-height: 2rem;
 	color: #fff;
+	cursor: pointer;
 	&:before {
 		content: '';
 		position: absolute;
