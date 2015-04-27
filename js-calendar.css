@@ -35,7 +35,8 @@
 
 .day {
   font-size: 72px;
-  padding: 34px 0; }
+  padding: 34px 0;
+  font-weight: 800; }
 
 .month-view {
   overflow: hidden; }
