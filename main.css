@@ -141,16 +141,19 @@ body {
   margin: 0 0 0 0; }
 
 a.github-link {
+  transition: all .2s;
   display: inline-block;
-  background: #e3594f;
-  line-height: 30px;
-  padding: 0 14px;
-  color: #fff;
-  font-size: 14px;
-  margin-top: 40px;
+  line-height: 24px;
+  padding: 0 10px;
+  color: #e3594f;
+  font-size: 12px;
+  font-weight: 400;
+  vertical-align: middle;
   text-decoration: none;
   border-radius: 4px;
-  border-bottom: solid 3px #DC3023; }
+  border: 1px solid #e3594f; }
+  a.github-link:hover {
+    background: #e3594f;
+    color: #fff; }
   a.github-link:active {
-    border-bottom: none;
-    margin-top: 42px; }
+    background: #DC3023; }
