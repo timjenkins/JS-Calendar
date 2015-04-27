@@ -1,5 +1,7 @@
 # JS Calendar
 A simple calendar plugin written in Vanilla Javascript
+
+
 [Live Demo](http://js-calendar.timjenkins.me)
 
 
