@@ -2,7 +2,8 @@
   display: block;
   max-width: 100%;
   vertical-align: top;
-  height: 191px; }
+  height: 191px;
+  margin: 0 auto; }
   @media screen and (min-width: 500px) {
     #calendar {
       width: 400px; } }
@@ -134,4 +135,7 @@
 
 body {
   padding: 40px;
-  font-family: sans-serif; }
+  font-family: sans-serif;
+  text-align: center;
+  border-top: solid 3px #e3594f;
+  margin: 0 0 0 0; }

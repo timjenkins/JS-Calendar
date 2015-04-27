@@ -3,6 +3,7 @@
   max-width: 100%;
   vertical-align: top;
   height: 191px;
+  margin: 0 auto;
 
   @include min-breakpoint(500px){
   	width: 400px;

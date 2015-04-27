@@ -10,4 +10,9 @@
 body {
   padding: 40px;
   font-family: sans-serif;
+  text-align: center;
+  border-top: solid 3px $primary-light;
+  // box-shadow: inset 0 10px 0 $primary-light;
+  margin: 0 0 0 0;
+
 }
