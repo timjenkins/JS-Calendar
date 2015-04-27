@@ -58,13 +58,13 @@
 		border-bottom: none;
 		font-size: 14px;
 	}
-	
+
 	&:hover {
-		background: #eee;
+			@include min-breakpoint(700px){	background: #eee;}
 	}
 	
 	&:active {
-		box-shadow: 0 0 0 6px #eee;
+			@include min-breakpoint(700px){box-shadow: 0 0 0 6px #eee;}
 	}
 }
 
@@ -79,8 +79,27 @@
 	font-size: 8px;
 	line-height: 2rem;
 	color: #fff;
+	&:before {
+		content: '';
+		position: absolute;
+		height: 0; width: 0;
+		top: 1em;
+		border: 6px solid transparent;
+	
+	}
 }
 
 .left-nav {left: 0;}
-
 .right-nav {right: 0;}
+
+.left-nav:before {
+	left: 3px;
+	top: 8px;
+	border-right: 8px solid #fff;
+}
+
+.right-nav:before {
+	right: 3px;
+	top: 8px;
+	border-left: 8px solid #fff;
+}
