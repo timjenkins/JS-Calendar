@@ -68,11 +68,9 @@ var Calendar = function(){
 
   // Set month and month view to next month
   this.nextMonth = function(){
-    
     ca.currentDate.month += 1;
     theNextMonth = new Date(ca.currentDate.year, ca.currentDate.month, ca.currentDate.day);
     ca.buildMonth(theNextMonth);
-    console.log(theNextMonth);
   };
 
 
