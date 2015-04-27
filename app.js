@@ -1,5 +1,7 @@
-var Calendar = function(){
+var Calendar = function(e){
   
+  this.contElement = e;
+
   this.today = new Date(); 
   
   this.currentDate = new Object();
@@ -23,8 +25,8 @@ var Calendar = function(){
   // Inject currently selected day information into Day View
   this.buildDay = function(date){
     var selectedDay = date;
-    document.getElementById("day").innerHTML = selectedDay.getDate();
-    document.getElementById("day-monthname").innerHTML = ca.getMonthName(date);
+    ca.contElement.querySelector("#day").innerHTML = selectedDay.getDate();
+    ca.contElement.querySelector("#day-monthname").innerHTML = ca.getMonthName(date);
   };
 
 
@@ -37,7 +39,7 @@ var Calendar = function(){
     var calendarHtml = "";
     var firstDay = ca.currentDate.monthDate.getDay();
 
-    document.getElementById("month-monthname").innerHTML = ca.getMonthName(date);
+    ca.contElement.querySelector("#month-monthname").innerHTML = ca.getMonthName(date);
 
     for (var i = 0; i < firstDay; i++){
       daysArray.push('');
@@ -61,7 +63,7 @@ var Calendar = function(){
       }
     }
 
-    document.getElementById("calendar-body").innerHTML = calendarHtml;
+    ca.contElement.querySelector("#calendar-body").innerHTML = calendarHtml;
     
   };
 
@@ -92,8 +94,8 @@ var Calendar = function(){
           var dayNumber = target.innerHTML;
           if (dayNumber != ""){
             
-            if (document.getElementById("active-day")){
-              document.getElementById("active-day").removeAttribute("id")
+            if (ca.contElement.querySelector("#active-day")){
+              ca.contElement.querySelector("#active-day").removeAttribute("id")
             };
 
             target.id = "active-day";
@@ -114,23 +116,63 @@ var Calendar = function(){
   // Bind Calendar Controls to proper functionality
   this.bindControls = function(){
     // Advance to next month
-    document.getElementById("next-month").addEventListener('click', ca.nextMonth, false);
+    ca.contElement.querySelector("#next-month").addEventListener('click', ca.nextMonth, false);
     // Go to previous month
-    document.getElementById("prev-month").addEventListener('click', ca.prevMonth, false);
+    ca.contElement.querySelector("#prev-month").addEventListener('click', ca.prevMonth, false);
     // Change selected day
-    document.getElementById("calendar-body").addEventListener('click',ca.changeDay,false);
+    ca.contElement.querySelector("#calendar-body").addEventListener('click',ca.changeDay,false);
     // Arrow Keys to change month
     document.onkeyup = arrowMonth;
   };
 
   // Build Calendar
   this.init = function(){
+    ca.buildHtml(ca.contElement);
     ca.bindControls();
     ca.buildDay(ca.today);
     ca.buildMonth(ca.today);
   }
 
   this.init();
+}
+
+// insert Calendar HTML into container element
+Calendar.prototype.buildHtml = function(el){
+  var theHtml =  
+    '<!-- day view showing month and giant day number -->\n' +
+    '  <div class="day-view">\n' +
+    '\n  ' +
+    '  <!-- month label for selected day -->\n' +
+    '    <div id="day-monthname" class="month-name">Month Name</div>\n' +
+    '\n' +
+    '    <!-- giant day number -->\n' +
+    '    <div class="day" id="day">28</div>\n' +
+    '\n' +
+    '  </div>\n' +
+    '\n' +
+    '\n' +
+    '\n' +
+    '  <!-- month view showing entire month layed out like a classic calendar -->\n' +
+    '  <div class="month-view">\n' +
+    '\n' +
+    '  <!-- month name and controls -->\n' +
+    '    <header>\n' +
+    '      <a href="#" class="left-nav" id="prev-month"></a>\n' +
+    '      <span id="month-monthname">Month Name</span>\n' +
+    '      <a href="#" class="right-nav" id="next-month"></a>\n' +
+    '    </header>\n' +
+    '\n' +
+    '  <!-- labels showing days of the week -->\n' +
+    '    <ul class="day-letters">\n' +
+    '      <li>S</li><li>M</li><li>T</li><li>W</li><li>T</li><li>F</li><li>S</li>\n' +
+    '    </ul>\n' +
+    '\n' +
+    '  <!-- days grid dynamically created here -->\n' +
+    '    <div id="calendar-body"></div>\n' +
+    '\n' +
+    '  </div>';
+
+  el.innerHTML = theHtml;
 }
 
 
@@ -146,4 +188,8 @@ Calendar.prototype.getMonthName = function(date){
   return monthNames[date.getMonth()];
 }
 
-var newCalendar = new Calendar();
+var el = document.getElementById("calendar");
+var newCalendar = new Calendar(el);
+
+// var el2 = document.getElementById("calendar2");
+// var newCalendar = new Calendar(el2);

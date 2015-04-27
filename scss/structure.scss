@@ -1,13 +1,14 @@
-#calendar {
+.calendar {
   display: block;
   max-width: 100%;
   vertical-align: top;
-  height: 191px;
   margin: 0 auto;
 
   @include min-breakpoint(500px){
   	width: 400px;
+  	height: 191px;
   };
+  margin-bottom: 40px;
 }
 
 .day-view,

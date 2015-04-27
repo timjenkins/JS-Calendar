@@ -1,11 +1,4 @@
-
-@import 'mixins',
-		'colours',
-		'structure',
-        'day-view',
-        'month-view';
-
-*{box-sizing: border-box}
+@import 'colours';
 
 body {
   padding: 40px;
