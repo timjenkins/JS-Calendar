@@ -69,8 +69,7 @@ var Calendar = function(){
   // Set month and month view to next month
   this.nextMonth = function(){
     
-    ca.currentDate.month += 2;
-
+    ca.currentDate.month += 1;
     theNextMonth = new Date(ca.currentDate.year, ca.currentDate.month, ca.currentDate.day);
     ca.buildMonth(theNextMonth);
     console.log(theNextMonth);
@@ -79,7 +78,7 @@ var Calendar = function(){
 
   // Set month and month view to previous month
   this.prevMonth = function(){
-    // ca.currentDate.month -= 1;
+    ca.currentDate.month -= 1;
     var thePrevMonth = new Date(ca.currentDate.year, ca.currentDate.month, ca.currentDate.day);
     ca.buildMonth(thePrevMonth);
   };
