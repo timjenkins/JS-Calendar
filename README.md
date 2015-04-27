@@ -1,5 +1,6 @@
 # JS Calendar
 A simple calendar plugin written in Vanilla Javascript
+Note: This plugin is made to be analyzed and read. The CSS and JS are not minified to maintain readability. In production, minification will be used. 
 
 ## Installation
 Include js-calendar.css on page or into sass project.
